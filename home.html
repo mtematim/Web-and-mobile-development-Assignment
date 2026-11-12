@@ -4,53 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My To-Do List</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>My To-Do List</h1>
-        <p>Manage your daily tasks efficiently</p>
-    </header>
+    <!-- LOGIN SECTION -->
+    <section id="loginSection">
 
-    <main class="container">
+        <h1>Task Manager</h1>
+        <h2>Login to Your Account</h2>
 
-        <section class="task-form">
-            <h2>Add a New Task</h2>
+        <form id="loginForm">
 
-            <form id="taskForm">
-                <input
-                    type="text"
-                    id="taskName"
-                    placeholder="Enter task name"
-                    required
-                >
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email" required>
+            <br><br>
 
-                <textarea
-                    id="taskDescription"
-                    placeholder="Enter task description"
-                    required
-                ></textarea>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"
+                   placeholder="Enter your password" required>
+            <br><br>
 
-                <button type="submit">Add Task</button>
-            </form>
-        </section>
+            <button type="submit">Login</button>
 
-        <section class="task-section">
-            <h2>Your Tasks</h2>
+        </form>
 
-            <div class="task-summary">
-                <p>Total Tasks: <span id="totalTasks">0</span></p>
-                <p>Completed: <span id="completedTasks">0</span></p>
-                <p>Pending: <span id="pendingTasks">0</span></p>
-            </div>
+        <p>Don't have an account?
+            <a href="register.html">Register here</a>
+        </p>
 
-            <div id="taskList"></div>
-        </section>
+    </section>
 
-    </main>
 
+    <!-- TODO DASHBOARD -->
+    <section id="dashboard" hidden>
+
+        <header>
+            <h1>My To-Do List</h1>
+            <p>Manage your daily tasks efficiently</p>
+            <button type="button" id="logoutButton">Logout</button>
+        </header>
+
+        <main class="container">
+
+            <section class="task-form">
+                <h2>Add a New Task</h2>
+
+                <form id="taskForm">
+
+                    <input
+                        type="text"
+                        id="taskName"
+                        placeholder="Enter task name"
+                        required
+                    >
+
+                    <textarea
+                        id="taskDescription"
+                        placeholder="Enter task description"
+                        required
+                    ></textarea>
+
+                    <button type="submit">Add Task</button>
+
+                </form>
+            </section>
+
+            <section class="task-section">
+                <h2>Your Tasks</h2>
+
+                <div class="task-summary">
+                    <p>Total Tasks: <span id="totalTasks">0</span></p>
+                    <p>Completed: <span id="completedTasks">0</span></p>
+                    <p>Pending: <span id="pendingTasks">0</span></p>
+                </div>
+
+                <div id="taskList"></div>
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- LOGIN AND LOGOUT BEHAVIOUR -->
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const loginSection = document.getElementById("loginSection");
+        const dashboard = document.getElementById("dashboard");
+        const logoutButton = document.getElementById("logoutButton");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            loginSection.hidden = true;
+            dashboard.hidden = false;
+        });
+
+        logoutButton.addEventListener("click", function() {
+            dashboard.hidden = true;
+            loginSection.hidden = false;
+            loginForm.reset();
+        });
+    </script>
+
+    <!-- EXISTING TASK MANAGEMENT JAVASCRIPT -->
     <script src="js/script.js"></script>
+
 </body>
 </html>
