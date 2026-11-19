@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 1. Connect to your Microsoft SQL Server Database
 const dbConfig = {
-    user: 'sa',                  // Replace with your SQL Server username
-    password: 'TodoPass123!', // Replace with your SQL Server password
-    server: 'localhost',         // Use 'localhost\\SQLEXPRESS' if using SQL Server Express
+    user: 'sa',                  
+    password: 'TodoPass123!', 
+    server: 'localhost',         
     database: 'todo_db',
     options: {
         encrypt: false,
